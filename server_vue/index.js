@@ -83,8 +83,8 @@ app.get("/Datalogin", function(req, res) {
         });
 });
 app.get("/", function(req, res) {
-    console.log("test")
-    res.json("test");
+    console.log("hello-world")
+    res.json("hello-world");
 });
 app.listen(7777);
 console.log("SERVER RUN SUCCESSFULLY")

@@ -45,18 +45,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-              <label for="agreeTerms">
-               ยอมรับ <a href="#">ข้อตกลง</a>
-              </label>
-            </div>
-          </div>
-          <!-- /.col -->
-          <!-- /.col -->
-        </div>
+       
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-3"></div>
@@ -114,11 +103,12 @@ import Swal from 'sweetalert2';
         .then((response) => {
             // this.datas = response.data
             console.log(response);
-            console.log(response.data);
+            console.log(response.data > 0);
+            if(response.data.status != 'Fail'){
                 Swal.fire({
                     icon: 'success',
                     title: 'สำเร็จ',
-                    text: 'สมัครสมาชิก สำเร็จ',
+                    text: 'สมัครมาชิก สำเร็จ',
                     timer: 1500
                 });
                 this.fName = "",
@@ -127,16 +117,18 @@ import Swal from 'sweetalert2';
                 this.Email = "",
                 this.Password = "";
                 this.$router.push('/login');
+              }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ผิดพลาด',
+                    text: 'ยูสเซอร์ ซ้ำ กรุณาลองใหม่',
+                    timer: 1500
+                });
+              }
 
         })
        .catch(function (error) {
              console.log(error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'คำเตือน...',
-                    text: '!!!!',
-                    timer: 1500
-                });
         });
             }
         },
