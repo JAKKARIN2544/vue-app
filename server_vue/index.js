@@ -46,8 +46,8 @@ app.use(cors(corsOptions));
 connection.on('error', function(err) {
     console.log("[mysql error]", err);
 });
-app.get("/getData", function(req, res) {
-    connection.query('SELECT * from users', function(err, rows, fields) {
+app.get("/showproduct", function(req, res) {
+    connection.query('SELECT * from product', function(err, rows, fields) {
         if (!err) {
             var data = rows
                 //console.log('The solution is: ', rows);
