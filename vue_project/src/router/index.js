@@ -29,7 +29,7 @@ const routes = [{
         component: product
     },
     {
-        path: '/detail',
+        path: '/detail/:pro_id',
         name: 'detail',
         component: detail
     }

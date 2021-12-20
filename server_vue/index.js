@@ -46,7 +46,21 @@ app.use(cors(corsOptions));
 connection.on('error', function(err) {
     console.log("[mysql error]", err);
 });
-app.get("/showproduct", function(req, res) {
+app.get("/DetailProduct", function(req, res) {
+    connection.query('SELECT * from product where pro_id = "' + req.query.id + '"',
+        function(err, rows, fields) {
+            if (!err) {
+                var data = {
+                    data: rows,
+
+                }
+                res.json(data);
+            } else {
+                console.log('Error while performing Query')
+            }
+        });
+});
+app.get("/ShowProduct", function(req, res) {
     connection.query('SELECT * from product', function(err, rows, fields) {
         if (!err) {
             var data = rows
